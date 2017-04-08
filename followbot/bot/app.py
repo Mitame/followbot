@@ -18,7 +18,7 @@ class App():
 
     def run(self):
         self.ws = WebSocketApp(
-            self.mastodon.api_base_url.replace("https", "wss") \
+            self.mastodon.api_base_url.replace("https", "wss").replace("http", "ws") \
              + "/api/v1/streaming/" + "?access_token=%s&stream=public" % self.mastodon.access_token,
             on_error = self.on_error,
             on_message = self.on_message,
