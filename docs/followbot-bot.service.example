@@ -6,7 +6,7 @@ Type=simple
 User=followbot
 EnvironmentFile=/home/followbot/.env
 WorkingDirectory=/home/followbot/
-Exec=/home/followbot/bot.py
+ExecStart=/home/followbot/bot.py
 
 [Install]
 WantedBy=multi-user.target
