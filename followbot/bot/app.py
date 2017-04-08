@@ -64,7 +64,7 @@ class App():
         if event_data["event"] == "update":
             self.follow(payload_data["account"])
 
-            for account in payload_data["metions"]:
+            for account in payload_data["mentions"]:
                 self.follow(account)
 
     def on_close(self, ws):
