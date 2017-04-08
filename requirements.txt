@@ -1,0 +1,5 @@
+pymongo
+flask
+websocket_client
+git+https://github.com/halcy/Mastodon.py
+flask_oauthlib
