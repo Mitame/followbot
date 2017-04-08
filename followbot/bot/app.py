@@ -59,7 +59,7 @@ class App():
         payload_data = json.loads(event_data["payload"])
 
         print("Event: %s" % event_data["event"])
-        pprint(payload_data)
+        # pprint(payload_data)
 
         if event_data["event"] == "update":
             self.follow(payload_data["account"])
