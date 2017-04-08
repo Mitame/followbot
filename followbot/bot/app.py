@@ -52,13 +52,13 @@ class App():
         })
 
     def on_error(self, ws, error):
-        print(error)
+        # print(error)
 
     def on_message(self, ws, message):
         event_data = json.loads(message)
         payload_data = json.loads(event_data["payload"])
 
-        print("Event: %s" % event_data["event"])
+        # print("Event: %s" % event_data["event"])
         # pprint(payload_data)
 
         if event_data["event"] == "update":
