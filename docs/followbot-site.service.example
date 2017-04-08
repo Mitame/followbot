@@ -1,0 +1,12 @@
+[Unit]
+Decription=Site frontend for FollowBot
+
+[Service]
+Type=simple
+User=followbot
+EnvironmentFile=/home/followbot/.env
+WorkingDirectory=/home/followbot/
+Exec=/home/followbot/site.py
+
+[Install]
+WantedBy=multi-user.target

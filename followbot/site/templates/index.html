@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FollowBot@mita.me</title>
+</head>
+<body>
+  <h3>Enter your username to stop me from following you</h3>
+  {% if message %}
+    <p>
+      <span>{{ message }}</span><br />
+    </p>
+  {% endif %}
+  <form action="/" method="POST">
+    <label for="acct">Username</label>
+    <input id="acct" name="acct" type="text" placeholder="user@mastodon.social"/>
+    <input type="submit" />
+  </form>
+  <p>
+    <p>
+      Find my code here: <a>https://github.com/Mitame/followbot</a>
+    </p>
+  </p>
+</body>
+</html>
