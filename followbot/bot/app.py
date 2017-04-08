@@ -28,14 +28,12 @@ class App():
         self.ws.run_forever()
 
     def follow(self, account):
-        # We're not fully active yet:
-        # if account["acct"] != "Mitame":
-        #     logging.info("Not doing other users yet.")
-        #     return
-
-        if account["locked"] or "#dnf" in account["note"].lower():
-            logging.info("Account %s is locked or has #dnf in their note" % account["acct"])
-            return
+        try:
+            if account["locked"] or "#dnf" in account["note"].lower():
+                logging.info("Account %s is locked or has #dnf in their note" % account["acct"])
+                return
+        except KeyError:
+            pass
 
         user = user_table.find_one({"uid": account["id"]})
         if user:
@@ -66,7 +64,12 @@ class App():
             self.follow(payload_data["account"])
 
             for account in payload_data["mentions"]:
-                self.follow(account)
+                # Get all the account info
+                accts = self.mastodon.account_search(account["acct"])
+                if len(accts) == 0:
+                    self.follow(account)
+                else:
+                    self.follow(accts[0])
 
     def on_close(self, ws):
         print("WS CLOSED")
