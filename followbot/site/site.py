@@ -20,3 +20,6 @@ def index():
             return render_template("index.html", message="We weren't following that account, but won't in the future")
         elif state == api.STATE_ALREADY_UNFOLLOWED:
             return render_template("index.html", message="We already stopped following that account")
+        else:
+            print(state)
+            return render_template("index.html", message="We did something and you should be unfollwed.")

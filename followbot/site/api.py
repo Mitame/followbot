@@ -16,6 +16,7 @@ mastodon_client = Mastodon(
 )
 
 def user_unfollow(acct):
+    acct = acct.strip("@")
     user = user_table.find_one({"acct": acct})
     if user:
         if user["following"]:
@@ -38,3 +39,5 @@ def user_unfollow(acct):
         "uid":  accounts[0]["id"],
         "following": False
     })
+
+    return STATE_ADDED_NOFOLLOW
