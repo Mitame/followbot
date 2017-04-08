@@ -17,6 +17,14 @@ mastodon_client = Mastodon(
 
 def user_unfollow(acct):
     acct = acct.strip("@")
+    accounts = mastodon_client.account_search(acct)
+
+    if len(accounts) == 0:
+        return STATE_NOTFOUND
+
+    account = accounts[0]
+    acct = account["acct"]
+    
     user = user_table.find_one({"acct": acct})
     if user:
         if user["following"]:
@@ -29,10 +37,6 @@ def user_unfollow(acct):
             # They're not being followed already
             return STATE_ALREADY_UNFOLLOWED
 
-    # Add them to the DNF list
-    accounts = mastodon_client.account_search(acct)
-    if len(accounts) == 0:
-        return STATE_NOTFOUND
 
     user_table.insert({
         "acct": accounts[0]["acct"],
