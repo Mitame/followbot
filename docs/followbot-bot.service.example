@@ -1,0 +1,12 @@
+[Unit]
+Decription=Mastodon bot backend for FollowBot
+
+[Service]
+Type=simple
+User=followbot
+EnvironmentFile=/home/followbot/.env
+WorkingDirectory=/home/followbot/
+Exec=/home/followbot/bot.py
+
+[Install]
+WantedBy=multi-user.target
