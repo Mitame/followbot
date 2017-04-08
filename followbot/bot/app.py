@@ -52,6 +52,7 @@ class App():
         })
 
     def on_error(self, ws, error):
+        pass
         # print(error)
 
     def on_message(self, ws, message):
